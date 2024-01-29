@@ -6,7 +6,6 @@ import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import supabase from '@/utils/supabase'
 import type Transaction from './TransactionType'
-import styles from '../Transaction.module.css'
 
 interface TransactionCrud {
   id?: number
@@ -68,8 +67,31 @@ export default function TransactionForm ({ handleClose, transaction }: {
       console.log(error)
     }
   }
+  function validateForm(transactionCrud: TransactionCrud) {
+    if (!transactionCrud.title || transactionCrud.title.length == 0) {
+      alert('Invalid Form, Title can not be empty')
+      return false
+    }
+    if (!transactionCrud.description || transactionCrud.description.length == 0) {
+      alert('Invalid Form, Description can not be empty')
+      return false
+    }
+
+    if (!transactionCrud.amount ) {
+      alert('Invalid Form, Amount can not be empty')
+      return false
+    }
+
+    return true
+  }
   const saveData = async () => {
-    if (!crud.id) { createNewTransaction(crud) } else { updateTransaction(crud) }
+    if(!validateForm(crud))
+      return
+    if (!crud.id) {
+       createNewTransaction(crud) 
+      } else {
+         updateTransaction(crud) 
+        }
 
     handleClose()
     window.location.reload()
