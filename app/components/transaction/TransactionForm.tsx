@@ -82,7 +82,7 @@ export default function TransactionForm({
     }
     if (
       !transactionCrud.description ||
-      transactionCrud.description.length == 0
+      transactionCrud.description.length === 0
     ) {
       alert("Invalid Form, Description can not be empty");
       return false;
@@ -97,11 +97,13 @@ export default function TransactionForm({
   }
   const saveData = async () => {
     if (!validateForm(crud)) return;
-    if (!crud.id) {
-      createNewTransaction(crud);
-    } else {
-      updateTransaction(crud);
-    }
+    try {
+      if (!crud.id) {
+        await createNewTransaction(crud);
+      } else {
+        await updateTransaction(crud);
+      }
+    } catch {}
 
     handleClose();
     window.location.reload();

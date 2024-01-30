@@ -35,8 +35,13 @@ export default async function Home() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {transactions &&
-              transactions.map((row) => <TransactionRow transaction={row} />)}
+            {transactions ? (
+              transactions.map((row) => (
+                <TransactionRow key={row.id} transaction={row} />
+              ))
+            ) : (
+              <></>
+            )}
           </TableBody>
         </Table>
       </TableContainer>

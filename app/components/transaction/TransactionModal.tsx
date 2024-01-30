@@ -39,7 +39,7 @@ export default function TransactionModal({
         </Typography>
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           Add a new transaction with a title, description, date and total amount
-          in Euro's (positive or negative)
+          in Euro&apos;s (positive or negative)
         </Typography>
 
         <Divider variant="middle" component="p" />
