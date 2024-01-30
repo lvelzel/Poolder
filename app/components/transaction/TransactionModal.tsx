@@ -1,26 +1,30 @@
-import React from 'react'
-import { Box, Modal, Typography } from '@mui/material'
-import Divider from '@mui/material/Divider'
+import React from "react";
+import { Box, Modal, Typography } from "@mui/material";
+import Divider from "@mui/material/Divider";
 
-import TransactionForm from './TransactionForm'
-import type Transaction from './TransactionType'
+import TransactionForm from "./TransactionForm";
+import type Transaction from "./TransactionType";
 
-export default function TransactionModal ({ open, handleClose, transaction }: {
-  open: boolean
-  handleClose: () => void
-  transaction?: Transaction
+export default function TransactionModal({
+  open,
+  handleClose,
+  transaction,
+}: {
+  open: boolean;
+  handleClose: () => void;
+  transaction?: Transaction;
 }) {
   const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute" as "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "background.paper",
+    border: "2px solid #000",
     boxShadow: 24,
-    p: 4
-  }
+    p: 4,
+  };
 
   return (
     <Modal
@@ -34,14 +38,13 @@ export default function TransactionModal ({ open, handleClose, transaction }: {
           Create a new transaction
         </Typography>
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Add a new transaction with a title, description, date and total amount in Euro's (positive or
-          negative)
+          Add a new transaction with a title, description, date and total amount
+          in Euro's (positive or negative)
         </Typography>
 
         <Divider variant="middle" component="p" />
-        <TransactionForm handleClose={handleClose} transaction={transaction}/>
-
+        <TransactionForm handleClose={handleClose} transaction={transaction} />
       </Box>
-  </Modal>
-  )
+    </Modal>
+  );
 }

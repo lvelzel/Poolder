@@ -3,7 +3,12 @@ module.exports = {
         "browser": true,
         "es2021": true
     },
-    "extends": "standard-with-typescript",
+    "extends": 
+    [
+        "standard-with-typescript",
+        "next", 
+        "plugin:prettier/recommended",
+        "prettier"],
     "overrides": [
         {
             "env": {
@@ -19,8 +24,17 @@ module.exports = {
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./tsconfig.json"
     },
+    "plugins": ["prettier"],
     "rules": {
+        "@typescript-eslint/no-unused-vars": [
+            "warn"
+        ],
+        "@typescript-eslint/strict-boolean-expressions": [
+            "warn"
+        ]
+        
     }
 }
